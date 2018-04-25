@@ -23,7 +23,8 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @RequestMapping("/test")
+    @ResponseBody
+    @RequestMapping("/register")
     public String test() {
         return "list";
     }

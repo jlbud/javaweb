@@ -46,7 +46,7 @@
 
     <error-page>
         <error-code>404</error-code>
-        <location>/WEB-INF/error404.jsp</location>
+        <location>/views/error404.jsp</location>
     </error-page>
 
     <!-- 解决工程编码过滤器 -->
@@ -69,7 +69,7 @@
     </filter-mapping>
 
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>views/index.jsp</welcome-file>
     </welcome-file-list>
 
     <session-config>
