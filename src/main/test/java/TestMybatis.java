@@ -1,5 +1,5 @@
-import com.chen.ssm.dao.IUserDao;
-import com.chen.ssm.entity.User;
+import com.web.dao.IUserDao;
+import com.web.entity.User;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package com.chen.ssm.entity;
+package com.web.entity;
 
 public class User {
 //    CREATE TABLE `user` (

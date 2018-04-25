@@ -1,6 +1,6 @@
-package com.chen.ssm.service;
+package com.web.service;
 
-import com.chen.ssm.entity.User;
+import com.web.entity.User;
 
 /**
  * com.chen.ssm.service

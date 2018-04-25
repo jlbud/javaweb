@@ -1,8 +1,8 @@
-package com.chen.ssm.service.impl;
+package com.web.service.impl;
 
-import com.chen.ssm.dao.IUserDao;
-import com.chen.ssm.entity.User;
-import com.chen.ssm.service.UserService;
+import com.web.dao.IUserDao;
+import com.web.entity.User;
+import com.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

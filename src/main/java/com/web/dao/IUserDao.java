@@ -1,6 +1,6 @@
-package com.chen.ssm.dao;
+package com.web.dao;
 
-import com.chen.ssm.entity.User;
+import com.web.entity.User;
 
 
 public interface IUserDao {

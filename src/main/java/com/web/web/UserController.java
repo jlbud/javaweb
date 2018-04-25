@@ -1,7 +1,7 @@
-package com.chen.ssm.web;
+package com.web.web;
 
-import com.chen.ssm.entity.User;
-import com.chen.ssm.service.UserService;
+import com.web.entity.User;
+import com.web.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -10,12 +10,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * com.chen.ssm.web
- * 作者      : 陈晓
- * 描述      :
- * 创建日期  : 2017/12/4
- * 修改日期  :
+ * kevin
  */
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -38,8 +35,8 @@ public class UserController {
     @ResponseBody
     @RequestMapping("/login")
     public String login(User user, HttpServletRequest request) {
-        user.setId(7);
-        user.setEmail("1118632@163.com");
+        user.setId(8);
+        user.setEmail("8@163.com");
         user.setPassword("f1dsadsa");
         user.setPhone("fdads1afdsa");
         user.setSex("fdafsafd1safdsa");
