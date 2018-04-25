@@ -2,13 +2,6 @@ package com.web.service;
 
 import com.web.entity.User;
 
-/**
- * com.chen.ssm.service
- * 作者      : 陈晓
- * 描述      :
- * 创建日期  : 2017/12/4
- * 修改日期  :
- */
 public interface UserService {
 
   User login(User user);

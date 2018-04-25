@@ -6,14 +6,6 @@ import com.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- * com.chen.ssm.service.impl
- * 作者      : 陈晓
- * 描述      :
- * 创建日期  : 2017/12/4
- * 修改日期  :
- */
-
 @Service("userService")
 public class IUserService implements UserService {
 
