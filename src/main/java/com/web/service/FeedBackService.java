@@ -1,6 +1,6 @@
 package com.web.service;
 
-import com.web.entity.FeedBackBean;
+import com.web.entity.requo.FeedBackBean;
 
 public interface FeedBackService {
 

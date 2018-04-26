@@ -1,7 +1,7 @@
 package com.web.service.impl;
 
 import com.web.dao.IUserDao;
-import com.web.entity.User;
+import com.web.entity.requo.UserBean;
 import com.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,21 +13,21 @@ public class IUserService implements UserService {
   private IUserDao userDao;
 
 
-  public User login(User user) {
+  public UserBean login(UserBean user) {
 //    return userDao.login(user);
     userDao.insert(user);
     return user;
   }
 
-  public User getUserById(String id) {
+  public UserBean getUserById(String id) {
     return userDao.selectByPrimaryKey(Integer.parseInt(id));
   }
 
-  public void add(User user) {
+  public void add(UserBean user) {
 
   }
 
-  public void update(User user) {
+  public void update(UserBean user) {
 
   }
 }

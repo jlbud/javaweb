@@ -1,14 +1,14 @@
 package com.web.service;
 
-import com.web.entity.User;
+import com.web.entity.requo.UserBean;
 
 public interface UserService {
 
-  User login(User user);
+  UserBean login(UserBean user);
 
-  User getUserById(String id);
+  UserBean getUserById(String id);
 
-  void add(User user);
+  void add(UserBean user);
 
-  void update(User user);
+  void update(UserBean user);
 }

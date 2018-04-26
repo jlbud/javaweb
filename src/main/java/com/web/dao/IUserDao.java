@@ -1,21 +1,21 @@
 package com.web.dao;
 
-import com.web.entity.User;
+import com.web.entity.requo.UserBean;
 
 
 public interface IUserDao {
 
-    User login(User user);
+    UserBean login(UserBean user);
 
-    User selectByPrimaryKey(Integer id);
+    UserBean selectByPrimaryKey(Integer id);
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(User record);
+    int insert(UserBean record);
 
-    int insertSelective(User record);
+    int insertSelective(UserBean record);
 
-    int updateByPrimaryKeySelective(User record);
+    int updateByPrimaryKeySelective(UserBean record);
 
-    int updateByPrimaryKey(User record);
+    int updateByPrimaryKey(UserBean record);
 }

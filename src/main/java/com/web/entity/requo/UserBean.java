@@ -1,21 +1,6 @@
-package com.web.entity;
+package com.web.entity.requo;
 
-public class User {
-//    CREATE TABLE `user` (
-//            `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
-//            `email` varchar(255) NOT NULL COMMENT '用户邮箱',
-//            `password` varchar(255) NOT NULL COMMENT '用户密码',
-//            `username` varchar(255) NOT NULL COMMENT '用户昵称',
-//            `phone` varchar(255) NOT NULL COMMENT '用户昵称',
-//            `sex` varchar(255) NOT NULL COMMENT '用户昵称',
-//            `sfz` varchar(255) NOT NULL COMMENT '用户昵称',
-//            `truename` varchar(255) NOT NULL COMMENT '用户昵称',
-//    PRIMARY KEY (`id`),
-//    UNIQUE KEY `email` (`email`) USING BTREE
-//) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-//    INSERT INTO `user` VALUES ('1', '18717825632@163.com', '123456', 'kevin', '187178256', '0', 'shen me gui', 'kevin liu');
-//    SET FOREIGN_KEY_CHECKS=1;
-
+public class UserBean {
     private Integer id;
     private String email;
     private String password;

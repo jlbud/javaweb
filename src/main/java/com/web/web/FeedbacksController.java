@@ -1,6 +1,8 @@
 package com.web.web;
 
-import com.web.entity.FeedBackBean;
+import com.web.common.JsonUtils;
+import com.web.entity.requo.FeedBackBean;
+import com.web.entity.respo.RespFeedBackBean;
 import com.web.service.FeedBackService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * kevin
@@ -23,15 +24,21 @@ public class FeedbacksController {
     private FeedBackService feedBackService;
 
     @ResponseBody
-    @RequestMapping(value="/feedback" ,method = RequestMethod.POST,consumes = "application/json")
+    @RequestMapping(value = "/feedback", method = RequestMethod.POST, consumes = "application/json")
     public String login(@RequestBody FeedBackBean feedBackBean) {
-//        String email = request.getParameter("email");
-//        String content = request.getParameter("content");
-//        FeedBackBean backBean = new FeedBackBean();
-//        backBean.setContent(content);
-//        backBean.setEmail(email);
-        feedBackService.feedBack(feedBackBean);
-        return "feedBackSuccess";
+        if (feedBackBean != null) {
+            feedBackService.feedBack(feedBackBean);
+            RespFeedBackBean backBean = new RespFeedBackBean();
+            backBean.setMessage("pass");
+            backBean.setSuccess("0");
+            return JsonUtils.responJson(backBean);
+        } else {
+            RespFeedBackBean backBean = new RespFeedBackBean();
+            backBean.setMessage("fail");
+            backBean.setSuccess("-1");
+            backBean.setData("content is null");
+            return JsonUtils.responJson(backBean);
+        }
     }
 
 }

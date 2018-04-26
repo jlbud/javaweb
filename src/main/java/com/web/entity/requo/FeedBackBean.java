@@ -1,4 +1,4 @@
-package com.web.entity;
+package com.web.entity.requo;
 
 public class FeedBackBean {
     private String email;
@@ -6,14 +6,6 @@ public class FeedBackBean {
 
     public void FeedBackBean(){
     }
-
-//    public Integer getId() {
-//        return id;
-//    }
-//
-//    public void setId(Integer id) {
-//        this.id = id;
-//    }
 
     public String getEmail() {
         return email;

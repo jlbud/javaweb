@@ -1,5 +1,5 @@
 import com.web.dao.IUserDao;
-import com.web.entity.User;
+import com.web.entity.requo.UserBean;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +20,7 @@ public class TestMybatis {
     @Test
     public void testSelectUser() throws Exception {
         Integer id = 1;
-        User user = dao.selectByPrimaryKey(id);
+        UserBean user = dao.selectByPrimaryKey(id);
         System.out.println(user.getEmail());
     }
 }
