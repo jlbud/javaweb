@@ -26,6 +26,12 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    /**
+     * register V1.0
+     *
+     * @param userBean
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = "application/json")
     public String register(@RequestBody UserBean userBean) {
@@ -44,6 +50,12 @@ public class UserController {
         }
     }
 
+    /**
+     * login V1.0
+     *
+     * @param userBean
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json")
     public String login(@RequestBody UserBean userBean) {
