@@ -12,9 +12,16 @@
     id, email, content
     </sql>
 
+    <!-- 插入一条数据 -->
     <insert id="insert" parameterType="com.web.entity.dbo.FeedBackBean">
     insert into t_feedback (email, content)
     values (#{email,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR})
     </insert>
 
+    <!-- 查找全部 -->
+    <select id="getAllFeedBack" resultType="com.web.entity.dbo.FeedBackBean">
+        select
+        <include refid="Base_Column_List"/>
+        from t_feedback;
+    </select>
 </mapper>

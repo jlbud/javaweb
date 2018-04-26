@@ -1,6 +1,6 @@
 package com.web.web;
 
-import com.web.common.JsonUtils;
+import com.web.common.ResponseUtils;
 import com.web.entity.dbo.UserBean;
 import com.web.entity.respo.RespFeedBackBean;
 import com.web.entity.respo.RespUserBean;
@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 /**
- * Create by kevin
+ * create by kevin
  * <p/>
- * 用户
+ * about user
  */
 
 @Controller
@@ -34,19 +35,20 @@ public class UserController {
      */
     @ResponseBody
     @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = "application/json")
-    public String register(@RequestBody UserBean userBean) {
+    public void register(@RequestBody UserBean userBean, HttpServletResponse response) {
         boolean isSuccess = userService.register(userBean);
         if (isSuccess) {
             RespFeedBackBean backBean = new RespFeedBackBean();
             backBean.setMessage("pass");
             backBean.setSuccess("0");
-            return JsonUtils.responJson(backBean);
+            ResponseUtils.renderJson(response, backBean);
         } else {
             RespFeedBackBean backBean = new RespFeedBackBean();
             backBean.setMessage("fail");
             backBean.setSuccess("-1");
             backBean.setData("register fail");
-            return JsonUtils.responJson(backBean);
+            ResponseUtils.renderJson(response, backBean);
+
         }
     }
 
@@ -58,22 +60,22 @@ public class UserController {
      */
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json")
-    public String login(@RequestBody UserBean userBean) {
+    public void login(@RequestBody UserBean userBean, HttpServletResponse response) {
         if (userBean == null || userBean.getPhone().equals("") || userBean.getPhone() == null) {
             RespUserBean respUserBean = new RespUserBean();
             respUserBean.setSuccess("-1");
-            return JsonUtils.responJson(respUserBean);
+            ResponseUtils.renderJson(response, respUserBean);
         } else {
             UserBean bean = userService.login(userBean);
             if (bean == null) {
                 RespUserBean respUserBean = new RespUserBean();
                 respUserBean.setSuccess("-1");
-                return JsonUtils.responJson(respUserBean);
+                ResponseUtils.renderJson(response, respUserBean);
             } else {
                 RespUserBean respUserBean = new RespUserBean();
                 respUserBean.setSuccess("0");
                 respUserBean.setData(bean);
-                return JsonUtils.responJson(respUserBean);
+                ResponseUtils.renderJson(response, respUserBean);
             }
         }
     }
