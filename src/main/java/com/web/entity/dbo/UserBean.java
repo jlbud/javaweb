@@ -1,4 +1,4 @@
-package com.web.entity.requo;
+package com.web.entity.dbo;
 
 public class UserBean {
     private Integer id;
@@ -10,7 +10,6 @@ public class UserBean {
     private String truename;
     private String username;
     public void User(){
-
     }
 
     public Integer getId() {

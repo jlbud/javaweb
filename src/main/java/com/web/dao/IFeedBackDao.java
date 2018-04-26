@@ -1,6 +1,6 @@
 package com.web.dao;
 
-import com.web.entity.requo.FeedBackBean;
+import com.web.entity.dbo.FeedBackBean;
 
 public interface IFeedBackDao {
 

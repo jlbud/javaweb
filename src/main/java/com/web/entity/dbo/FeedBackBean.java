@@ -1,4 +1,4 @@
-package com.web.entity.requo;
+package com.web.entity.dbo;
 
 public class FeedBackBean {
     private String email;

@@ -1,7 +1,7 @@
 package com.web.web;
 
 import com.web.common.JsonUtils;
-import com.web.entity.requo.FeedBackBean;
+import com.web.entity.dbo.FeedBackBean;
 import com.web.entity.respo.RespFeedBackBean;
 import com.web.service.FeedBackService;
 import org.springframework.stereotype.Controller;

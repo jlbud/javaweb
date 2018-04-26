@@ -1,55 +1,69 @@
 package com.web.web;
 
-import com.web.entity.requo.UserBean;
+import com.web.common.JsonUtils;
+import com.web.entity.dbo.UserBean;
+import com.web.entity.respo.RespFeedBackBean;
+import com.web.entity.respo.RespUserBean;
 import com.web.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 /**
- * kevin
+ * Create by kevin
+ * <p/>
+ * 用户
  */
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/xiaoshi/user")
 public class UserController {
 
     @Resource
     private UserService userService;
 
     @ResponseBody
-    @RequestMapping("/register")
-    public String test() {
-        return "list";
-    }
-
-    @ResponseBody
-    @RequestMapping("/index")
-    public String index() {
-        return "login";
-    }
-
-    @ResponseBody
-    @RequestMapping("/login")
-    public String login(UserBean user, HttpServletRequest request) {
-        user.setEmail("18@163.com");
-        user.setPassword("f1dsadsa");
-        user.setPhone("fdads1afdsa");
-        user.setSex("fdafsafd1safdsa");
-        user.setSfz("fdadsa1");
-        user.setTruename("fd1a");
-        user.setUsername("fda1fdafdsa");
-        UserBean loginUser = userService.login(user);
-        if (loginUser != null) {
-            request.getSession().setAttribute("currentUser", loginUser);
-            return "loginSuccess";
+    @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = "application/json")
+    public String register(@RequestBody UserBean userBean) {
+        boolean isSuccess = userService.register(userBean);
+        if (isSuccess) {
+            RespFeedBackBean backBean = new RespFeedBackBean();
+            backBean.setMessage("pass");
+            backBean.setSuccess("0");
+            return JsonUtils.responJson(backBean);
+        } else {
+            RespFeedBackBean backBean = new RespFeedBackBean();
+            backBean.setMessage("fail");
+            backBean.setSuccess("-1");
+            backBean.setData("register fail");
+            return JsonUtils.responJson(backBean);
         }
-        request.getSession().setAttribute("message", "用户名或密码有误！！！");
-        System.out.println(loginUser.getUsername());
-        return "login";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json")
+    public String login(@RequestBody UserBean userBean) {
+        if (userBean == null || userBean.getPhone().equals("") || userBean.getPhone() == null) {
+            RespUserBean respUserBean = new RespUserBean();
+            respUserBean.setSuccess("-1");
+            return JsonUtils.responJson(respUserBean);
+        } else {
+            UserBean bean = userService.login(userBean);
+            if (bean == null) {
+                RespUserBean respUserBean = new RespUserBean();
+                respUserBean.setSuccess("-1");
+                return JsonUtils.responJson(respUserBean);
+            } else {
+                RespUserBean respUserBean = new RespUserBean();
+                respUserBean.setSuccess("0");
+                respUserBean.setData(bean);
+                return JsonUtils.responJson(respUserBean);
+            }
+        }
     }
 
     @RequestMapping("/search")

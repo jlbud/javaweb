@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.web.dao.IUserDao">
 
-    <resultMap id="BaseResultMap" type="com.web.entity.requo.UserBean">
+    <resultMap id="BaseResultMap" type="com.web.entity.dbo.UserBean">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="email" property="email" jdbcType="VARCHAR"/>
         <result column="password" property="password" jdbcType="VARCHAR"/>
@@ -17,13 +17,14 @@
     id, email, password, phone, sex, sfz, trueName, userName
   </sql>
 
-    <select id="login" resultMap="BaseResultMap" parameterType="com.web.entity.requo.UserBean">
+    <select id="login" resultMap="BaseResultMap" parameterType="com.web.entity.dbo.UserBean">
         SELECT
         <include refid="Base_Column_List"/>
         FROM t_user WHERE userName = #{username,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
 
     </select>
 
+    <!-- 通过id，查找 -->
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>
@@ -31,19 +32,27 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
 
+    <!-- 通过手机号，查找 -->
+    <select id="selectByPrimaryPhone" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where phone = #{phone,jdbcType=VARCHAR}
+    </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
 
-    <insert id="insert" parameterType="com.web.entity.requo.UserBean">
+    <insert id="insert" parameterType="com.web.entity.dbo.UserBean">
     insert into t_user (id, email, password,userName, phone, sex, sfz, trueName)
     values (#{id,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{sfz,jdbcType=VARCHAR}, #{truename,jdbcType=VARCHAR}, 
-      #{username,jdbcType=VARCHAR})
+      #{username,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{sfz,jdbcType=VARCHAR},
+      #{truename,jdbcType=VARCHAR})
   </insert>
 
-    <insert id="insertSelective" parameterType="com.web.entity.requo.UserBean">
+    <insert id="insertSelective" parameterType="com.web.entity.dbo.UserBean">
         insert into t_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -98,7 +107,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.web.entity.requo.UserBean">
+    <update id="updateByPrimaryKeySelective" parameterType="com.web.entity.dbo.UserBean">
         update t_user
         <set>
             <if test="email != null">
@@ -125,7 +134,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.web.entity.requo.UserBean">
+    <update id="updateByPrimaryKey" parameterType="com.web.entity.dbo.UserBean">
     update t_user
     set email = #{email,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
