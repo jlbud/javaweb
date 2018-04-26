@@ -23,9 +23,14 @@ public class FeedbacksController {
     @Resource
     private FeedBackService feedBackService;
 
+    /**
+     * 意见反馈 V1.0
+     * @param feedBackBean
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/feedback", method = RequestMethod.POST, consumes = "application/json")
-    public String login(@RequestBody FeedBackBean feedBackBean) {
+    public String feedback(@RequestBody FeedBackBean feedBackBean) {
         if (feedBackBean != null) {
             feedBackService.feedBack(feedBackBean);
             RespFeedBackBean backBean = new RespFeedBackBean();
