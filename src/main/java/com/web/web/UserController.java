@@ -93,7 +93,7 @@ public class UserController {
     public void doUploadFile(@RequestParam("file") MultipartFile file, HttpServletResponse response) {
         if (!file.isEmpty()) {
             try {
-                //这里将上传得到的文件保存至 windows d:\\temp\\file 目录,linux /Users/liuwei01/Downloads
+                //save directory: windows d:\\temp\\file ,linux /Users/liuwei01/Downloads
                 FileUtils.copyInputStreamToFile(file.getInputStream(), new File("/Users/liuwei01/Pictures/",
                         System.currentTimeMillis() + file.getOriginalFilename()));
             } catch (IOException e) {
@@ -114,7 +114,7 @@ public class UserController {
      */
     @RequestMapping(value = "/doMultiUpload", method = RequestMethod.POST, consumes = "multipart/form-data;charset=utf-8")
     public void doUploadFileMulti(MultipartHttpServletRequest multiRequest, HttpServletResponse response) throws IOException {
-        Iterator<String> filesNames = multiRequest.getFileNames();//获得所有的文件名
+        Iterator<String> filesNames = multiRequest.getFileNames();//get all files name
         while (filesNames.hasNext()) {
             String fileName = filesNames.next();
             MultipartFile file = multiRequest.getFile(fileName);
