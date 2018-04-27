@@ -20,7 +20,7 @@ import java.util.Iterator;
 /**
  * create by kevin
  * <p/>
- * about user
+ * about user interface
  */
 
 @Controller
