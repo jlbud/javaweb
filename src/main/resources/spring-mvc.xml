@@ -10,7 +10,7 @@
                         http://www.springframework.org/schema/mvc
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
     <!-- 开启注解-->
-    <mvc:annotation-driven />
+    <mvc:annotation-driven/>
     <!-- 自动扫描  @Controller-->
     <context:component-scan base-package="com.web"/>
 
@@ -53,4 +53,15 @@
         <!-- 内存中的最大值 -->
         <property name="maxInMemorySize" value="4096"/>
     </bean>
+
+    <!-- 配置拦截器 -->
+    <mvc:interceptors>
+        <!-- 多个拦截器，按顺序执行 -->
+        <mvc:interceptor>
+            <!-- 表示拦截所有的url包括子url路径 -->
+            <mvc:mapping path="/**"/>
+            <bean class="com.web.interceptor.MyHandlerInterceptor"/>
+        </mvc:interceptor>
+        <!-- 可以继续配置多个 -->
+    </mvc:interceptors>
 </beans>

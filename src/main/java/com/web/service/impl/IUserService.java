@@ -9,8 +9,7 @@ import org.springframework.stereotype.Service;
 @Service("userService")
 public class IUserService implements UserService {
 
-    @Autowired
-    private IUserDao userDao;
+    @Autowired private IUserDao userDao;
 
     @Override
     public boolean register(UserBean user) {
