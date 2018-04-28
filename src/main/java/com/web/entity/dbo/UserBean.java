@@ -1,47 +1,57 @@
 package com.web.entity.dbo;
 
 public class UserBean {
-    private Integer id;
-    private String email;
-    private String password;
-    private String phone;
+    private int id;
+    private String createTime;
+    private String userName;
+    private String nickName;
+    private String phoneNumber;
     private String sex;
-    private String sfz;
-    private String truename;
-    private String username;
-    public void User(){
+    private String email;
+    private String avatar;
+    private String token;
+
+    public void User() {
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getSex() {
@@ -49,30 +59,30 @@ public class UserBean {
     }
 
     public void setSex(String sex) {
-        this.sex = sex == null ? null : sex.trim();
+        this.sex = sex;
     }
 
-    public String getSfz() {
-        return sfz;
+    public String getEmail() {
+        return email;
     }
 
-    public void setSfz(String sfz) {
-        this.sfz = sfz == null ? null : sfz.trim();
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getTruename() {
-        return truename;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setTruename(String truename) {
-        this.truename = truename == null ? null : truename.trim();
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
-    public String getUsername() {
-        return username;
+    public String getToken() {
+        return token;
     }
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+    public void setToken(String token) {
+        this.token = token;
     }
 }

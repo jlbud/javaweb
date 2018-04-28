@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +26,7 @@ import java.util.Iterator;
 
 @Controller
 @RequestMapping("/xiaoshi/user")
-public class UserController {
+public class UserController extends BaseController {
 
     @Resource
     private UserService userService;
@@ -63,24 +64,28 @@ public class UserController {
      */
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json")
-    public void login(@RequestBody UserBean userBean, HttpServletResponse response) {
-        if (userBean == null || userBean.getPhone().equals("") || userBean.getPhone() == null) {
-            RespUserBean respUserBean = new RespUserBean();
-            respUserBean.setSuccess("-1");
-            ResponseUtils.renderJson(response, respUserBean);
-        } else {
-            UserBean bean = userService.login(userBean);
-            if (bean == null) {
-                RespUserBean respUserBean = new RespUserBean();
-                respUserBean.setSuccess("-1");
-                ResponseUtils.renderJson(response, respUserBean);
-            } else {
-                RespUserBean respUserBean = new RespUserBean();
-                respUserBean.setSuccess("0");
-                respUserBean.setData(bean);
-                ResponseUtils.renderJson(response, respUserBean);
-            }
+    public void login(HttpServletRequest request, HttpServletResponse response, @RequestBody UserBean userBean) {
+        boolean isPass = checkToken(request, response);
+        if (isPass) {
+
         }
+//        if (userBean == null || userBean.getPhoneNumber().equals("") || userBean.getPhoneNumber() == null) {
+//            RespUserBean respUserBean = new RespUserBean();
+//            respUserBean.setSuccess("-1");
+//            ResponseUtils.renderJson(response, respUserBean);
+//        } else {
+//            UserBean bean = userService.login(userBean);
+//            if (bean == null) {
+//                RespUserBean respUserBean = new RespUserBean();
+//                respUserBean.setSuccess("-1");
+//                ResponseUtils.renderJson(response, respUserBean);
+//            } else {
+//                RespUserBean respUserBean = new RespUserBean();
+//                respUserBean.setSuccess("0");
+//                respUserBean.setData(bean);
+//                ResponseUtils.renderJson(response, respUserBean);
+//            }
+//        }
     }
 
     /**

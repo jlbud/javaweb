@@ -14,13 +14,14 @@ public class IUserService implements UserService {
 
     @Override
     public boolean register(UserBean user) {
-        if (user == null || user.getPhone() == null || user.getPhone().equals("")) {
+        if (user == null || user.getPhoneNumber() == null || user.getPhoneNumber().equals("")) {
             return false;
         } else {
-            UserBean bean = getUserByPhone(user.getPhone());
+            UserBean bean = getUserByPhone(user.getPhoneNumber());
             if (bean != null) {
                 return false;
             } else {
+                user.setCreateTime(String.valueOf(System.currentTimeMillis()));
                 userDao.insert(user);
                 return true;
             }
@@ -29,7 +30,7 @@ public class IUserService implements UserService {
 
     @Override
     public UserBean login(UserBean user) {
-        UserBean bean = getUserByPhone(user.getPhone());
+        UserBean bean = getUserByPhone(user.getPhoneNumber());
         if (bean == null) {
             return null;
         } else {
