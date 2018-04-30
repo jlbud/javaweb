@@ -58,7 +58,7 @@ public class FeedbacksController {
      *
      * @return
      */
-    @RequestMapping(value = "feedback/all", method = RequestMethod.GET, consumes = "application/json")
+    @RequestMapping(value = "/feedback/all", method = RequestMethod.GET, consumes = "application/json")
     public void getAllFeedBack(HttpServletRequest request, HttpServletResponse response) {
         List<FeedBackBean> feedBackList = feedBackService.getAllFeedBack();
         RespFeedBackListBean backListBean = new RespFeedBackListBean();
@@ -74,7 +74,7 @@ public class FeedbacksController {
     /**
      * 获取某个用户的反馈
      */
-    @RequestMapping(value = "feedback/all/{userId}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/feedback/all/{userId}", method = RequestMethod.GET, produces = "application/json")
     public String getFeedBackByUserId() {
         return "";
     }

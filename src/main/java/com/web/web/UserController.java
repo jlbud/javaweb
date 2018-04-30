@@ -3,6 +3,7 @@ package com.web.web;
 import com.web.common.ResponseUtils;
 import com.web.entity.dbo.UserBean;
 import com.web.entity.respo.RespFeedBackBean;
+import com.web.entity.respo.RespFeedBackListBean;
 import com.web.entity.respo.RespUserBean;
 import com.web.service.UserService;
 import org.apache.commons.io.FileUtils;
@@ -133,8 +134,10 @@ public class UserController extends BaseController {
         ResponseUtils.renderJson(response, respUserBean);
     }
 
-    @RequestMapping("/search")
-    public String search() {
-        return "login";
+    @RequestMapping(value = "/search", method = RequestMethod.GET, consumes = "application/json")
+    public void search(HttpServletResponse response) {
+        RespFeedBackListBean bean = new RespFeedBackListBean();
+        bean.setSuccess("0");
+        ResponseUtils.renderJson(response, bean);
     }
 }
