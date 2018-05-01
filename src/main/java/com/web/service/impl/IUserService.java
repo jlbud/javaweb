@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 @Service("userService")
 public class IUserService implements UserService {
 
-    @Autowired private IUserDao userDao;
+    @Autowired
+    private IUserDao userDao;
 
     @Override
     public boolean register(UserBean user) {
@@ -29,7 +30,7 @@ public class IUserService implements UserService {
 
     @Override
     public UserBean login(UserBean user) {
-        UserBean bean = getUserByPhone(user.getPhoneNumber());
+        UserBean bean = userDao.login(user);
         if (bean == null) {
             return null;
         } else {

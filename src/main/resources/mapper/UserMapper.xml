@@ -45,14 +45,13 @@
     <select id="login" resultMap="BaseResultMap" parameterType="com.web.entity.dbo.UserBean">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM t_user WHERE userName = #{username,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
-
+        FROM t_user WHERE phone_number = #{phoneNumber,jdbcType=VARCHAR} and token = #{token,jdbcType=VARCHAR}
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_user
     where id = #{id,jdbcType=INTEGER}
-  </delete>
+    </delete>
 
     <insert id="insertSelective" parameterType="com.web.entity.dbo.UserBean">
         insert into t_user

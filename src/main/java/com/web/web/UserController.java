@@ -53,7 +53,6 @@ public class UserController extends BaseController {
             backBean.setSuccess("-1");
             backBean.setData("register fail");
             ResponseUtils.renderJson(response, backBean);
-
         }
     }
 
@@ -66,27 +65,23 @@ public class UserController extends BaseController {
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json")
     public void login(HttpServletRequest request, HttpServletResponse response, @RequestBody UserBean userBean) {
-        boolean isPass = checkToken(request, response);
-        if (isPass) {
-
+        if (userBean == null || userBean.getPhoneNumber().equals("") || userBean.getPhoneNumber() == null) {
+            RespUserBean respUserBean = new RespUserBean();
+            respUserBean.setSuccess("-1");
+            ResponseUtils.renderJson(response, respUserBean);
+        } else {
+            UserBean bean = userService.login(userBean);
+            if (bean == null) {
+                RespUserBean respUserBean = new RespUserBean();
+                respUserBean.setSuccess("-1");
+                ResponseUtils.renderJson(response, respUserBean);
+            } else {
+                RespUserBean respUserBean = new RespUserBean();
+                respUserBean.setSuccess("0");
+                respUserBean.setData(bean);
+                ResponseUtils.renderJson(response, respUserBean);
+            }
         }
-//        if (userBean == null || userBean.getPhoneNumber().equals("") || userBean.getPhoneNumber() == null) {
-//            RespUserBean respUserBean = new RespUserBean();
-//            respUserBean.setSuccess("-1");
-//            ResponseUtils.renderJson(response, respUserBean);
-//        } else {
-//            UserBean bean = userService.login(userBean);
-//            if (bean == null) {
-//                RespUserBean respUserBean = new RespUserBean();
-//                respUserBean.setSuccess("-1");
-//                ResponseUtils.renderJson(response, respUserBean);
-//            } else {
-//                RespUserBean respUserBean = new RespUserBean();
-//                respUserBean.setSuccess("0");
-//                respUserBean.setData(bean);
-//                ResponseUtils.renderJson(response, respUserBean);
-//            }
-//        }
     }
 
     /**
