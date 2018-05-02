@@ -26,7 +26,7 @@ import java.util.Iterator;
  */
 
 @Controller
-@RequestMapping("/xiaoshi/user")
+@RequestMapping("/user")
 public class UserController extends BaseController {
 
     @Resource
@@ -103,6 +103,7 @@ public class UserController extends BaseController {
         }
         RespUserBean respUserBean = new RespUserBean();
         respUserBean.setSuccess("0");
+        respUserBean.setData(new UserBean());
         ResponseUtils.renderJson(response, respUserBean);
     }
 

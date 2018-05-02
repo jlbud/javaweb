@@ -23,7 +23,7 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping("/xiaoshi")
+@RequestMapping("/feedback")
 public class FeedbacksController {
 
     @Resource
@@ -36,7 +36,7 @@ public class FeedbacksController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/feedback", method = RequestMethod.POST, consumes = "application/json")
+    @RequestMapping(value = "", method = RequestMethod.POST, consumes = "application/json")
     public void feedback(@RequestBody FeedBackBean feedBackBean, HttpServletResponse response) {
         if (feedBackBean != null) {
             feedBackService.feedBack(feedBackBean);
@@ -58,7 +58,7 @@ public class FeedbacksController {
      *
      * @return
      */
-    @RequestMapping(value = "/feedback/all", method = RequestMethod.GET, consumes = "application/json")
+    @RequestMapping(value = "/all", method = RequestMethod.GET, consumes = "application/json")
     public void getAllFeedBack(HttpServletRequest request, HttpServletResponse response) {
         List<FeedBackBean> feedBackList = feedBackService.getAllFeedBack();
         RespFeedBackListBean backListBean = new RespFeedBackListBean();
